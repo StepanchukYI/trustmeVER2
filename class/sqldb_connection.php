@@ -306,6 +306,8 @@ class sqldb_connection
             ':user_id' => $user_id, ':buyer_id' => $buyer_id, ':status' => $status, ':made_in' => $made_in,
             ':description' => $description, ':add_date' => $add_date, ':product_country' => $product_country,
             ':product_city' => $product_city));
+        return $dbh->lastInsertId();
+        /*
         $sth = $dbh->prepare("SELECT product_id FROM product WHERE product_name = :product_name AND category = :category AND
                         price = :price AND owner_id = :user_id AND buyer_id = :buyer_id AND status = :status AND
                         made_in = :made_in AND description = :description AND add_date = :add_date AND
@@ -315,7 +317,7 @@ class sqldb_connection
             ':description' => $description, ':add_date' => $add_date, ':product_country' => $product_country,
             ':product_city' => $product_city));
         return $sth->fetchAll(PDO::FETCH_ASSOC)[0]['product_id'];
-
+        */
     }
 
 

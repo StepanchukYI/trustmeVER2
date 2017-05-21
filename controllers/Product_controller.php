@@ -130,7 +130,7 @@ switch (@$command) {
 if(@$product_photo){$pht = "photo";}
 
 logging(@$_SESSION['user_id']." ".@$product_id." ".@$product_name." ".@$category." ".@$price." ".@$made_in." ".@$description." ".
-    @$product_country." ".@$product_city." ".$pht,json_encode($response),@$command);
+    @$product_country." ".@$product_city." ".@$pht,json_encode($response),@$command);
 
 if(gettype($response) == "string"){
     $request = array('error' => $response);
