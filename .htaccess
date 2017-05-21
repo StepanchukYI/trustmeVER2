@@ -1,0 +1,4 @@
+php_value session.save_path C:\xampp\htdocs\trustmeVER2\sessions
+
+php_value session.gc_maxlifetime 604800
+php_value session.cookie_lifetime 604800

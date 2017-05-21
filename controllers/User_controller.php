@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "../model/User.php";
 include_once("../class/Samfuu.php");
 

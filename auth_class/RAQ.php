@@ -31,6 +31,7 @@ function Auth($login, $password)
         sqldb_connection::Update_online_status($tmp_db_row['user_ID'], 1,
             date("Y-m-d h:m:s"));// обновляем статус на онлайн
         $id = sqldb_connection::Auth_Select_All($login, $password);
+        $_SESSION['user_id'] = $id['user_id'];
         return $id;
     } else {
         return $errorArr[0];
@@ -142,6 +143,7 @@ return $request;
 function Quit($id)
 {
     sqldb_connection::Update_online_status($id, 0, date("Y-m-d h:m:s"));   // обновляем статус на офлайн
+    session_unset();
     return sqldb_connection::Auth_Select_All_id($id);
 }
 

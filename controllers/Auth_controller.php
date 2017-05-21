@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "../auth_class/RAQ.php";
 
 extract($_REQUEST);
@@ -36,11 +37,8 @@ switch (@$command) {
         break;
     case "quit":  //http://37.57.92.40/trustme/controllers/auth_controller.php?command=quit&id=1
 
-        if (@$id != "") {
-            $response = Quit(@$id);
-        } else {
-            $response = "null field";
-        }
+            $response = Quit(@$_SESSION['user_id']);
+
         break;
     case "forgot_pass":
         $response = Password_forgot(@$email);
