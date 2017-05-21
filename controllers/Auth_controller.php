@@ -26,7 +26,7 @@ switch (@$command) {
     case "registration_full": //http://37.57.92.40/trustme/controllers/auth_controller.php?command=reg_full&id=1&email_2=fsdfsd@mads.ru&name=dasdasd&surname=fsdfsdfsdf&birth_day=14&birth_month=3&birth_year=1996&sex=1&country=Ucraine&city=Dnepro&photo
 
 
-        if (@$id != "" && @$email_2 != "" && @$name != "" && @$surname != "" && @$birth_day != ""
+        if (@$_SESSION['user_id'] != "" && @$email_2 != "" && @$name != "" && @$surname != "" && @$birth_day != ""
             && @$birth_month != "" && @$birth_year != "" && @$sex != "" && @$country != "" && @$city != ""
         ) {
             $response = Registration_full(@$id, @$email_2, @$name, @$surname, @$birth_day,
@@ -47,7 +47,7 @@ switch (@$command) {
         $response = "failed command";
         break;
 }
-logging(@$email." ".@$password." ".@$id." ".@$email_2." ".@$name." ".@$surname." ".@$birth_day
+logging(@$email." ".@$password." ".@$_SESSION['user_id']." ".@$email_2." ".@$name." ".@$surname." ".@$birth_day
     ." ".@$birth_month." ".@$birth_year." ".@$sex." ".@$country." ".@$city, json_encode($response), @$command);
 
 if(gettype($response) == "string"){

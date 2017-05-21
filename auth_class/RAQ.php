@@ -143,7 +143,7 @@ return $request;
 function Quit($id)
 {
     sqldb_connection::Update_online_status($id, 0, date("Y-m-d h:m:s"));   // обновляем статус на офлайн
-    session_unset();
+    session_destroy();
     return sqldb_connection::Auth_Select_All_id($id);
 }
 

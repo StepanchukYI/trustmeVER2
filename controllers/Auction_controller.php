@@ -9,17 +9,17 @@ $auction = new Auction();
 switch (@$command) {
     case "makeBid": //http://37.57.92.40/trustme/controllers/auction_controller.php?command=makeBid&product_id=2&user_id=2&user_bid=50
 
-        if (@$product_id != "" && @$user_id != "" && @$user_bid != "") {
+        if (@$product_id != "" && @$_SESSION['user_id'] != "" && @$user_bid != "") {
 
-            $response = $auction->Make_bid(@$product_id, @$user_id, @$user_bid);
+            $response = $auction->Make_bid(@$product_id, @$_SESSION['user_id'], @$user_bid);
         } else {
             $response = "null field";
         }
         break;
     case "showBidsByUser": //http://37.57.92.40/trustme/controllers/auction_controller.php?command=showBidsByUser&user_id=2
 
-        if (@$user_id != "") {
-            $response = $auction->Show_bids_by_user(@$user_id);
+        if (@$_SESSION['user_id'] != "") {
+            $response = $auction->Show_bids_by_user(@$_SESSION['user_id']);
         } else {
             $response = "null field";
         }
@@ -45,7 +45,7 @@ switch (@$command) {
         break;
 }
 
-logging(@$product_id." ".@$user_id." ".@$user_bid." ",json_encode($response),@$command);
+logging(@$product_id." ".@$_SESSION['user_id']." ".@$user_bid." ",json_encode($response),@$command);
 
 if(gettype($response) == "string"){
     $request = array('error' => $response);
